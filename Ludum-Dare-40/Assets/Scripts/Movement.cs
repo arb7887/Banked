@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Created By Andrew Baron for Ludum Dare 40
+/// </summary>
 public class Movement : MonoBehaviour {
     public float speed = 15.0f;
     private Rigidbody rb;
@@ -11,21 +14,21 @@ public class Movement : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
     }
-    void Update () {
+    void Update () 
+    {
         amountToMove = new Vector3(0f, 0f);
         int coins = GetComponent<CoinManagement>().amountOfCoins;
         speed = 15.0f - coins;
-        if (Input.GetKey(KeyCode.W)) amountToMove.z += speed;
-        if (Input.GetKey(KeyCode.S)) amountToMove.z -= speed;
-        if (Input.GetKey(KeyCode.A)) amountToMove.x -= speed;
-        if (Input.GetKey(KeyCode.D)) amountToMove.x += speed;
+        if (Input.GetKey(KeyCode.W) && !Physics.Raycast(transform.position, Vector3.forward, 0.5f)) amountToMove.z += speed;
+        if (Input.GetKey(KeyCode.S) && !Physics.Raycast(transform.position, Vector3.back, 0.5f)) amountToMove.z -= speed;
+        if (Input.GetKey(KeyCode.A) && !Physics.Raycast(transform.position, Vector3.left, 0.5f)) amountToMove.x -= speed;
+        if (Input.GetKey(KeyCode.D) && !Physics.Raycast(transform.position, Vector3.right, 0.5f)) amountToMove.x += speed;
         Move(amountToMove * Time.deltaTime);
-        if(Input.GetKeyDown(KeyCode.Space) && rb.velocity.y == 0)
+        if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y == 0)
         {
             Vector3 upVelocity = Vector3.up * 10.0f;
             upVelocity.y -= coins;
             rb.velocity = upVelocity;
-            
         }
     }
     /// <summary>

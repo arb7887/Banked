@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CoinManagement : MonoBehaviour {
     public int amountOfCoins;
     public GameObject coin;
+    public GameObject scoreText;
     void Awake()
     {
         amountOfCoins = 0;
@@ -20,14 +22,15 @@ public class CoinManagement : MonoBehaviour {
             Physics.IgnoreCollision(GetComponent<Collider>(), newcoin.GetComponent<Collider>());
             Vector3 velocity = Vector3.back * 2.0f;
             newcoin.GetComponent<Rigidbody>().velocity = velocity;
+            newcoin.GetComponent<Rigidbody>().angularVelocity = new Vector3(-4.0f, 0.0f, 0.0f);
         }
+        scoreText.GetComponent<TextMeshPro>().text = amountOfCoins.ToString();
     }
     void OnTriggerEnter(Collider c)
     {
         if (c.gameObject.tag == "Coin")
         {
             c.gameObject.SetActive(false);
-            Destroy(c.gameObject);
             amountOfCoins++;
         }
     }
