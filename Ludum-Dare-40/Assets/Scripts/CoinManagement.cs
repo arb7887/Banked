@@ -13,23 +13,24 @@ public class CoinManagement : MonoBehaviour {
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift) && amountOfCoins > 0)
+        if (Input.GetKeyDown(KeyCode.LeftControl) && amountOfCoins > 0)
         {
             GameObject newcoin = Instantiate(coin, new Vector3(transform.position.x, transform.position.y, transform.position.z - 2.0f), Quaternion.identity);
             amountOfCoins--;
             newcoin.GetComponent<Rigidbody>().useGravity = true;
             newcoin.GetComponent<CoinAnimation>().shouldAnimate = false;
-            Physics.IgnoreCollision(GetComponent<Collider>(), newcoin.GetComponent<Collider>());
             Vector3 velocity = Vector3.back * 2.0f;
             newcoin.GetComponent<Rigidbody>().velocity = velocity;
             newcoin.GetComponent<Rigidbody>().angularVelocity = new Vector3(-4.0f, 0.0f, 0.0f);
         }
-        scoreText.GetComponent<TextMeshPro>().text = amountOfCoins.ToString();
+        scoreText.GetComponent<TextMeshProUGUI>().SetText(amountOfCoins.ToString());
     }
     void OnTriggerEnter(Collider c)
     {
+        Debug.Log("trigger");
         if (c.gameObject.tag == "Coin")
         {
+            Debug.Log("inside of if" + c);
             c.gameObject.SetActive(false);
             amountOfCoins++;
         }

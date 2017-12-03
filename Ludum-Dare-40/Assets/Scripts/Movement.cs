@@ -19,10 +19,10 @@ public class Movement : MonoBehaviour {
         amountToMove = new Vector3(0f, 0f);
         int coins = GetComponent<CoinManagement>().amountOfCoins;
         speed = 15.0f - coins;
-        if (Input.GetKey(KeyCode.W) && !Physics.Raycast(transform.position, Vector3.forward, 0.5f)) amountToMove.z += speed;
-        if (Input.GetKey(KeyCode.S) && !Physics.Raycast(transform.position, Vector3.back, 0.5f)) amountToMove.z -= speed;
-        if (Input.GetKey(KeyCode.A) && !Physics.Raycast(transform.position, Vector3.left, 0.5f)) amountToMove.x -= speed;
-        if (Input.GetKey(KeyCode.D) && !Physics.Raycast(transform.position, Vector3.right, 0.5f)) amountToMove.x += speed;
+        if (Input.GetKey(KeyCode.W) && !Physics.Raycast(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Vector3.forward, 1.0f)) amountToMove.z += speed;
+        if (Input.GetKey(KeyCode.S) && !Physics.Raycast(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Vector3.back, 1.0f)) amountToMove.z -= speed;
+        if (Input.GetKey(KeyCode.A) && !Physics.Raycast(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Vector3.left, 0.75f)) amountToMove.x -= speed;
+        if (Input.GetKey(KeyCode.D) && !Physics.Raycast(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Vector3.right, 0.75f)) amountToMove.x += speed;
         Move(amountToMove * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y == 0)
         {
