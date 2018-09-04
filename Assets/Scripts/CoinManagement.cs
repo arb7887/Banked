@@ -13,7 +13,7 @@ public class CoinManagement : MonoBehaviour {
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && amountOfCoins > 0)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && amountOfCoins > 0)
         {
             GameObject newcoin = Instantiate(coin, new Vector3(transform.position.x, transform.position.y, transform.position.z - 2.0f), Quaternion.identity);
             amountOfCoins--;
@@ -32,6 +32,7 @@ public class CoinManagement : MonoBehaviour {
         {
             Debug.Log("inside of if" + c);
             c.gameObject.SetActive(false);
+            Destroy(c.gameObject);
             amountOfCoins++;
         }
     }
