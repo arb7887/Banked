@@ -1,2 +1,2 @@
-# Ludum-Dare-40
-My submission for Ludum Dare 40!
+# Banked!
+A cheeky puzzle game involving a piggy bank and some strange coins...
