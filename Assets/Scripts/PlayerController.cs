@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float maxJumpHeight;
     CharacterController controller;
     float yVelocity;
-    float gravity = -12f;
+    float gravity = -20f;
     [Range(0, 1)]
     public float airMovementPercent; //slider in Unity so we can adjust if we want
     private void Awake(){
@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour {
         Vector2 direction = axisMovement.normalized;
 
         //Jump if Space is pressed
-        if (Input.GetKeyDown(KeyCode.Space)) Jump(coins);
+        if (Input.GetKeyDown(KeyCode.Space))
+            Jump(coins);
 
         //Calculate gravity
         yVelocity += Time.deltaTime * gravity;
