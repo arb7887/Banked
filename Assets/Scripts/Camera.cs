@@ -14,11 +14,14 @@ public class Camera : MonoBehaviour {
     }
 	
 	void LateUpdate () {
-        offset = (Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up)
-            * Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * -turnSpeed, Vector3.right))
+        float xRotation = Input.GetAxis("Mouse X") * turnSpeed;
+        float yRotation = Input.GetAxis("Mouse Y") * -turnSpeed;
+
+        offset = (Quaternion.AngleAxis(xRotation, Vector3.up)
+            * Quaternion.AngleAxis(yRotation, Vector3.left))
             * offset;
 
         transform.position = player.position + offset;
         transform.LookAt(player.position);
-	}
+    }
 }

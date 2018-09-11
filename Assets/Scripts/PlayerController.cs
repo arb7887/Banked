@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     public float speed;
     public float maxJumpHeight;
-    CharacterController controller;
-    float yVelocity;
-    float gravity = -20f;
+    public Camera camera;
+    private CharacterController controller;
+    private float yVelocity;
+    private float gravity = -20f;
     [Range(0, 1)]
     public float airMovementPercent; //slider in Unity so we can adjust if we want
     private void Awake(){
