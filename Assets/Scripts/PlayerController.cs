@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     public float speed;
     public float maxJumpHeight;
-    public Camera camera;
+    public GameObject camera;
     private CharacterController controller;
     private float yVelocity;
     private float gravity = -20f;
@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour {
 
         Vector2 axisMovement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Vector2 direction = axisMovement.normalized;
-
+        Vector3 cameraDirection = camera.transform.position - transform.position;
+        cameraDirection = cameraDirection.normalized;
         //Jump if Space is pressed
         if (Input.GetKeyDown(KeyCode.Space))
             Jump(coins);
@@ -31,7 +32,6 @@ public class PlayerController : MonoBehaviour {
         float newSpeed = Mathf.Clamp(speed - (coins / 2), 0, float.MaxValue);
 
         Vector3 velocity = new Vector3(direction.x, 0, direction.y) * GetModifiedSpeed(newSpeed);
-
         //do y velocity seperate to avoid having to multiply by speed
         velocity += Vector3.up * yVelocity; 
 

@@ -214,7 +214,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   maxJumpHeight: 0
-  airMovementPercent: 0
+  camera: {fileID: 1151171714750474}
+  airMovementPercent: 0.5
 --- !u!114 &114425965837495364
 MonoBehaviour:
   m_ObjectHideFlags: 1
