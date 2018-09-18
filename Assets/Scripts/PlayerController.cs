@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
         int coins = GetComponent<CoinManagement>().amountOfCoins;
 
         Vector2 axisMovement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Vector2 direction = axisMovement.normalized;
+        axisMovement = axisMovement.normalized;
         Vector3 cameraDirection = camera.transform.position - transform.position;
         cameraDirection = cameraDirection.normalized;
         //Jump if Space is pressed
@@ -31,14 +31,27 @@ public class PlayerController : MonoBehaviour {
         //Take in the amount of coins for speed
         float newSpeed = Mathf.Clamp(speed - (coins / 2), 0, float.MaxValue);
 
-        Vector3 velocity = new Vector3(direction.x, 0, direction.y) * GetModifiedSpeed(newSpeed);
+        Vector3 targetDirection = new Vector3(axisMovement.x, 0f, axisMovement.y);
+
+        //Rotations
+        targetDirection = camera.transform.TransformDirection(targetDirection);
+        targetDirection.y = 0.0f;
+
+        if (targetDirection != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+            Quaternion newRotation = Quaternion.Lerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+            transform.rotation = newRotation;
+        }
+
+        Vector3 velocity = targetDirection * GetModifiedSpeed(newSpeed);
         //do y velocity seperate to avoid having to multiply by speed
-        velocity += Vector3.up * yVelocity; 
+        velocity += Vector3.up * yVelocity;
 
         controller.Move(velocity * Time.deltaTime);
 
         //If it is on the ground, stop using gravity
-        if(controller.isGrounded)
+        if (controller.isGrounded)
         {
             yVelocity = 0;
         }
