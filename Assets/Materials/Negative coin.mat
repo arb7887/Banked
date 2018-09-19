@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Negative
+  m_Name: Negative coin
   m_Shader: {fileID: 4800000, guid: 57c46bda6b994004b94f887d0cd3ec9d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

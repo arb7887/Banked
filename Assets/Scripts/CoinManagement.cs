@@ -15,11 +15,11 @@ public class CoinManagement : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Mouse1) && amountOfCoins > 0)
         {
-            GameObject newcoin = Instantiate(coin, new Vector3(transform.position.x, transform.position.y, transform.position.z - 2.0f), Quaternion.identity);
+            GameObject newcoin = Instantiate(coin, transform.position - (transform.forward.normalized * 2.0f), Quaternion.identity);
             amountOfCoins--;
             newcoin.GetComponent<Rigidbody>().useGravity = true;
             newcoin.GetComponent<CoinAnimation>().shouldAnimate = false;
-            Vector3 velocity = Vector3.back * 2.0f;
+            Vector3 velocity = -transform.forward.normalized * 2.0f;
             newcoin.GetComponent<Rigidbody>().velocity = velocity;
             newcoin.GetComponent<Rigidbody>().angularVelocity = new Vector3(-4.0f, 0.0f, 0.0f);
         }
@@ -27,10 +27,8 @@ public class CoinManagement : MonoBehaviour {
     }
     void OnTriggerEnter(Collider c)
     {
-        Debug.Log("trigger");
         if (c.gameObject.tag == "Coin")
         {
-            Debug.Log("inside of if" + c);
             c.gameObject.SetActive(false);
             Destroy(c.gameObject);
             amountOfCoins++;
