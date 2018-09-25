@@ -12,7 +12,7 @@ public class Camera : MonoBehaviour {
     void Start () {
         xRotation = transform.eulerAngles.x;
         yRotation = transform.eulerAngles.y;
-        offset = transform.position;
+        offset = new Vector3(0, 3, -8);
     }
 	
 	void LateUpdate () {

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 124390328025914602}
   - component: {fileID: 81662011250384468}
   - component: {fileID: 114425965837495364}
+  - component: {fileID: 114710208610571400}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -171,7 +172,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!81 &81662011250384468
 AudioListener:
@@ -213,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  maxJumpHeight: 0
+  maxJumpHeight: 5
   camera: {fileID: 1151171714750474}
   airMovementPercent: 0.5
 --- !u!114 &114425965837495364
@@ -228,6 +229,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: e4096b47fb2baeb48abbb4b8e67e11cf, type: 2}
+--- !u!114 &114710208610571400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151171714750474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04010ad541df56941aad7eaf4a39dd94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4643532062183580}
+  turnSpeed: 4
 --- !u!124 &124390328025914602
 Behaviour:
   m_ObjectHideFlags: 1
@@ -245,7 +259,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1
+  m_Height: 0.9
   m_Radius: 0.47
   m_SlopeLimit: 45
   m_StepOffset: 0.3
