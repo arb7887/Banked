@@ -19,7 +19,7 @@ public class Camera : MonoBehaviour {
         xRotation += Input.GetAxis("Mouse X") * turnSpeed;
         yRotation -= Input.GetAxis("Mouse Y") * turnSpeed;
 
-        yRotation = ClampAngle(yRotation, -20, 55);
+        yRotation = ClampAngle(yRotation, -70, 55);
 
         Quaternion rotation = Quaternion.Euler(yRotation, xRotation, 0);
 

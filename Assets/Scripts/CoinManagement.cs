@@ -11,43 +11,49 @@ public class CoinManagement : MonoBehaviour {
         Negative,
         Light
     };
-    private List<CoinType> availableCoinTypes;
-    private CoinType currentCoinType;
+    private Queue<CoinType> coinQueue;
 
-    public int amountOfCoins;
+    public int amountOfNegativeCoins;
     public GameObject coin;
+    public GameObject negativeCoin;
     public GameObject scoreText;
     void Awake()
     {
-        availableCoinTypes = new List<CoinType>();
-        amountOfCoins = 0;
+        coinQueue = new Queue<CoinType>();
+        amountOfNegativeCoins = 0;
     }
     void Update()
     {
-        //TO DO
-        if (Input.GetKeyUp(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Mouse1) && coinQueue.Count != 0)
         {
-
-        }
-        if (Input.GetKeyUp(KeyCode.Mouse1) && amountOfCoins > 0)
-        {
-            GameObject newcoin = Instantiate(coin, transform.position - (transform.forward.normalized * 2.0f), Quaternion.identity);
-            amountOfCoins--;
+            CoinType poppedCoin = coinQueue.Dequeue();
+            GameObject currentCoin = coin;
+            if (poppedCoin == CoinType.Negative) currentCoin = negativeCoin;
+            GameObject newcoin = Instantiate(currentCoin, transform.position - (transform.forward.normalized * 2.0f), Quaternion.identity);
             newcoin.GetComponent<Rigidbody>().useGravity = true;
             newcoin.GetComponent<CoinAnimation>().shouldAnimate = false;
             Vector3 velocity = -transform.forward.normalized * 2.0f;
             newcoin.GetComponent<Rigidbody>().velocity = velocity;
             newcoin.GetComponent<Rigidbody>().angularVelocity = transform.right * -4;
         }
-        scoreText.GetComponent<TextMeshProUGUI>().SetText(amountOfCoins.ToString());
+        //scoreText.GetComponent<TextMeshProUGUI>().SetText(amountOfCoins.ToString());
     }
     void OnTriggerEnter(Collider c)
     {
         if (c.gameObject.tag.Contains("Coin"))
         {
+            switch(c.gameObject.tag)
+            {
+                case "Coin":
+                    coinQueue.Enqueue(CoinType.Normal);
+                    break;
+                case "NegativeCoin":
+                    coinQueue.Enqueue(CoinType.Negative);
+                    amountOfNegativeCoins++;
+                    break;
+            }
             c.gameObject.SetActive(false);
             Destroy(c.gameObject);
-            amountOfCoins++;
         }
     }
 }
