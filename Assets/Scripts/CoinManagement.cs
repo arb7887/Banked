@@ -13,6 +13,7 @@ public class CoinManagement : MonoBehaviour {
     };
     private Queue<CoinType> coinQueue;
 
+    public int coinMultiplier;
     public int amountOfNegativeCoins;
     public GameObject coin;
     public GameObject negativeCoin;
@@ -21,6 +22,7 @@ public class CoinManagement : MonoBehaviour {
     {
         coinQueue = new Queue<CoinType>();
         amountOfNegativeCoins = 0;
+        coinMultiplier = 0;
     }
     void Update()
     {
@@ -28,13 +30,18 @@ public class CoinManagement : MonoBehaviour {
         {
             CoinType poppedCoin = coinQueue.Dequeue();
             GameObject currentCoin = coin;
-            if (poppedCoin == CoinType.Negative) currentCoin = negativeCoin;
+            if (poppedCoin == CoinType.Negative)
+            {
+                currentCoin = negativeCoin;
+                amountOfNegativeCoins--;
+            }
             GameObject newcoin = Instantiate(currentCoin, transform.position - (transform.forward.normalized * 2.0f), Quaternion.identity);
             newcoin.GetComponent<Rigidbody>().useGravity = true;
             newcoin.GetComponent<CoinAnimation>().shouldAnimate = false;
             Vector3 velocity = -transform.forward.normalized * 2.0f;
             newcoin.GetComponent<Rigidbody>().velocity = velocity;
             newcoin.GetComponent<Rigidbody>().angularVelocity = transform.right * -4;
+            coinMultiplier = coinQueue.Count - (amountOfNegativeCoins * 2);
         }
         //scoreText.GetComponent<TextMeshProUGUI>().SetText(amountOfCoins.ToString());
     }
@@ -55,5 +62,6 @@ public class CoinManagement : MonoBehaviour {
             c.gameObject.SetActive(false);
             Destroy(c.gameObject);
         }
+        coinMultiplier = coinQueue.Count - (amountOfNegativeCoins * 2);
     }
 }

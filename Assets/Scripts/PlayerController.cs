@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
         controller = GetComponent<CharacterController>();
     }
     void Update () {
-        int coins = GetComponent<CoinManagement>().amountOfCoins;
+        int coins = GetComponent<CoinManagement>().coinMultiplier;
 
         Vector2 axisMovement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         axisMovement = axisMovement.normalized;

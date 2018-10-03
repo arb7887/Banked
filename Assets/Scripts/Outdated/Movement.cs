@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour {
     void Update () 
     {
         amountToMove = new Vector3(0f, 0f);
-        int coins = GetComponent<CoinManagement>().amountOfCoins;
+        int coins = GetComponent<CoinManagement>().coinMultiplier;
         speed = 15.0f - coins;
         if (Input.GetKey(KeyCode.W) && !Physics.Raycast(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Vector3.forward, 1.0f)) amountToMove.z += speed;
         if (Input.GetKey(KeyCode.S) && !Physics.Raycast(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Vector3.back, 1.0f)) amountToMove.z -= speed;
