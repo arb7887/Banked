@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 
 public class CoinManagement : MonoBehaviour {
-    private enum CoinType
+    public enum CoinType
     {
         Normal,
         Negative,
@@ -18,27 +18,41 @@ public class CoinManagement : MonoBehaviour {
     public GameObject coin;
     public GameObject negativeCoin;
     public GameObject scoreText;
+
+    private CharacterController playerController;
+
     void Awake()
     {
         coinQueue = new Queue<CoinType>();
         amountOfNegativeCoins = 0;
         coinMultiplier = 0;
+        playerController = GetComponent<CharacterController>();
     }
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1) && coinQueue.Count != 0)
         {
             CoinType poppedCoin = coinQueue.Dequeue();
             GameObject currentCoin = coin;
+            Vector3 spawnPosition = transform.position - (transform.forward.normalized * 2.0f);
+            Vector3 velocity = -transform.forward.normalized * 2.0f;
             if (poppedCoin == CoinType.Negative)
             {
                 currentCoin = negativeCoin;
                 amountOfNegativeCoins--;
             }
-            GameObject newcoin = Instantiate(currentCoin, transform.position - (transform.forward.normalized * 2.0f), Quaternion.identity);
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down, out hit);
+            if (!playerController.isGrounded && hit.distance > 1.5f)
+            {
+                GetComponent<PlayerController>().MidAirJump(coinMultiplier);
+                velocity = -transform.up.normalized * 5.0f;
+                spawnPosition = transform.position - (transform.up.normalized * 1.5f);
+            }
+            GameObject newcoin = Instantiate(currentCoin, spawnPosition, Quaternion.identity);
             newcoin.GetComponent<Rigidbody>().useGravity = true;
             newcoin.GetComponent<CoinAnimation>().shouldAnimate = false;
-            Vector3 velocity = -transform.forward.normalized * 2.0f;
+
             newcoin.GetComponent<Rigidbody>().velocity = velocity;
             newcoin.GetComponent<Rigidbody>().angularVelocity = transform.right * -4;
             coinMultiplier = coinQueue.Count - (amountOfNegativeCoins * 2);

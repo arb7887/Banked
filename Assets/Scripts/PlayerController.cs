@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour {
             Jump(coins);
 
         //Calculate gravity
-        yVelocity += Time.deltaTime * gravity;
+        if(!controller.isGrounded)
+            yVelocity += Time.deltaTime * gravity;
 
         //Take in the amount of coins for speed
         float newSpeed = Mathf.Clamp(speed - (coins / 2), 0, float.MaxValue);
@@ -49,12 +50,6 @@ public class PlayerController : MonoBehaviour {
         velocity += Vector3.up * yVelocity;
 
         controller.Move(velocity * Time.deltaTime);
-
-        //If it is on the ground, stop using gravity
-        if (controller.isGrounded)
-        {
-            yVelocity = 0;
-        }
     }
 
     /// <summary>
@@ -67,6 +62,11 @@ public class PlayerController : MonoBehaviour {
         {
             yVelocity = Mathf.Sqrt(-2 * gravity * Mathf.Clamp(maxJumpHeight - (coins / 2), 0, float.MaxValue));
         }
+    }
+
+    public void MidAirJump(int coins)
+    {
+        yVelocity = Mathf.Sqrt(-2 * gravity * Mathf.Clamp(2.0f - (coins / 5.0f), 0, float.MaxValue));
     }
 
     /// <summary>
