@@ -34,8 +34,8 @@ public class CoinManagement : MonoBehaviour {
         {
             CoinType poppedCoin = coinQueue.Dequeue();
             GameObject currentCoin = coin;
-            Vector3 spawnPosition = transform.position - (transform.forward.normalized * 2.0f);
-            Vector3 velocity = -transform.forward.normalized * 2.0f;
+            Vector3 spawnPosition = transform.position + (transform.up.normalized * 1.2f);
+            Vector3 velocity = (transform.up.normalized + -transform.forward.normalized) * 5.0f;
             if (poppedCoin == CoinType.Negative)
             {
                 currentCoin = negativeCoin;
