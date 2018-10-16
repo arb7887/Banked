@@ -28,7 +28,7 @@ public class CoinManagement : MonoBehaviour {
         coinMultiplier = 0;
         playerController = GetComponent<CharacterController>();
     }
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1) && coinQueue.Count != 0)
         {
