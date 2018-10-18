@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114978231951095336}
   - component: {fileID: 54334178228703504}
   - component: {fileID: 64011434425258446}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Negative Coin
   m_TagString: NegativeCoin
   m_Icon: {fileID: 0}
