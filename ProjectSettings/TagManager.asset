@@ -9,6 +9,7 @@ TagManager:
   - ATM
   - DeathTrigger
   - NegativeCoin
+  - GlowCoin
   layers:
   - Default
   - TransparentFX
