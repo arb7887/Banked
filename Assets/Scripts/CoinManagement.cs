@@ -9,14 +9,16 @@ public class CoinManagement : MonoBehaviour {
     {
         Normal,
         Negative,
-        Light
+        Glow
     };
     private Queue<CoinType> coinQueue;
 
     public int coinMultiplier;
     public int amountOfNegativeCoins;
+    public int amountOfGlowCoins;
     public GameObject coin;
     public GameObject negativeCoin;
+    public GameObject glowCoin;
     public GameObject scoreText;
 
     private CharacterController playerController;
