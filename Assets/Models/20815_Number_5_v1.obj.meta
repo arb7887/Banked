@@ -1,60 +1,22 @@
 fileFormatVersion: 2
-guid: b3fa2b7caf274364787f8b582fe782bb
+guid: 0c4f7df211236e045960de3be4a7d6fb
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: pCylinder1
-    100004: pCylinder2
-    100006: pCylinder4
-    100008: pCylinder5
-    100010: pPyramid1
-    100012: pPyramid2
-    100014: pPyramid3
-    100016: pPyramid4
-    100018: pSphere1
-    100020: transform1
-    100022: transform2
-    100024: transform3
-    100026: transform4
-    100028: transform5
-    100030: transform6
-    100032: transform7
-    100034: transform8
-    400000: //RootNode
-    400002: pCylinder1
-    400004: pCylinder2
-    400006: pCylinder4
-    400008: pCylinder5
-    400010: pPyramid1
-    400012: pPyramid2
-    400014: pPyramid3
-    400016: pPyramid4
-    400018: pSphere1
-    400020: transform1
-    400022: transform2
-    400024: transform3
-    400026: transform4
-    400028: transform5
-    400030: transform6
-    400032: transform7
-    400034: transform8
-    2300000: pPyramid4
-    3300000: pPyramid4
-    4300000: pPyramid4
-    9500000: //RootNode
-    2186277476908879412: ImportLogs
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 04fe4a728eb3c5b4aa132ef56c6adf83, type: 2}
+    100000: 20815_Number_5_v1
+    100002: //RootNode
+    400000: 20815_Number_5_v1
+    400002: //RootNode
+    2100000: 20815_Number_5_v1Mat
+    2300000: 20815_Number_5_v1
+    3300000: 20815_Number_5_v1
+    4300000: 20815_Number_5_v1
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -80,13 +42,13 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 3
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -106,7 +68,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 0
+    normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -126,7 +88,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

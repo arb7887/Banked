@@ -59,7 +59,17 @@ public class CoinManagement : MonoBehaviour {
             newcoin.GetComponent<Rigidbody>().angularVelocity = transform.right * -4;
             coinMultiplier = coinQueue.Count - (amountOfNegativeCoins * 2);
         }
-        //scoreText.GetComponent<TextMeshProUGUI>().SetText(amountOfCoins.ToString());
+        scoreText.GetComponent<TextMeshProUGUI>().SetText(coinMultiplier.ToString());
+    }
+    public CoinType PopCoin()
+    {
+        CoinType poppedCoin = coinQueue.Dequeue();
+        if (poppedCoin == CoinType.Negative)
+        {
+            amountOfNegativeCoins--;
+        }
+        coinMultiplier = coinQueue.Count - (amountOfNegativeCoins * 2);
+        return poppedCoin;
     }
     void OnTriggerEnter(Collider c)
     {

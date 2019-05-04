@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     private CharacterController controller;
     private float yVelocity;
     private float gravity = -20f;
+    public int coinRequirement;
     [Range(0, 1)]
     public float airMovementPercent; //slider in Unity so we can adjust if we want
     private void Awake(){
@@ -80,5 +81,52 @@ public class PlayerController : MonoBehaviour {
         if (controller.isGrounded) return s;
         if (airMovementPercent == 0) return float.MaxValue;
         return s * airMovementPercent;
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("Enter");
+        if (collision.gameObject.name == "Finish" && GetComponent<CoinManagement>().coinMultiplier >= coinRequirement)
+        {
+            Destroy(collision.gameObject);
+        }
+        if(collision.gameObject.name == "Door" && GetComponent<CoinManagement>().coinMultiplier >= 3)
+        {
+            Destroy(collision.gameObject);
+            for(int i = 0; i < 3; i++)
+            {
+                GetComponent<CoinManagement>().PopCoin();
+            }
+        }
+    }
+
+    //Pushable objects
+    // https://docs.unity3d.com/ScriptReference/CharacterController.OnControllerColliderHit.html
+    float pushPower = 4.0f;
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+
+        // no rigidbody
+        if (body == null || body.isKinematic)
+        {
+            return;
+        }
+
+        // We dont want to push objects below us
+        if (hit.moveDirection.y < -0.3)
+        {
+            return;
+        }
+
+        // Calculate push direction from move direction,
+        // we only push objects to the sides never up and down
+        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+
+        // If you know how fast your character is trying to move,
+        // then you can also multiply the push velocity by that.
+
+        // Apply the push
+        body.velocity = pushDir * pushPower;
     }
 }
