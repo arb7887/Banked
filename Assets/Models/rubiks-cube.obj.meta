@@ -1,18 +1,52 @@
 fileFormatVersion: 2
-guid: 232414cef6a822f42b30dab23bb23f97
+guid: ef54e40249b70c6409dde1863371ed9a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: default
-    100002: //RootNode
-    400000: default
-    400002: //RootNode
-    2100000: mat18
-    2100002: mat22
-    2300000: default
-    3300000: default
-    4300000: default
-    2186277476908879412: ImportLogs
+    100000: base
+    100002: faces_cyan
+    100004: faces_green
+    100006: faces_orange
+    100008: faces_red
+    100010: faces_white
+    100012: faces_yellow
+    100014: //RootNode
+    400000: base
+    400002: faces_cyan
+    400004: faces_green
+    400006: faces_orange
+    400008: faces_red
+    400010: faces_white
+    400012: faces_yellow
+    400014: //RootNode
+    2100000: base
+    2100002: faces_cyan
+    2100004: faces_green
+    2100006: faces_orange
+    2100008: faces_red
+    2100010: faces_white
+    2100012: faces_yellow
+    2300000: base
+    2300002: faces_cyan
+    2300004: faces_green
+    2300006: faces_orange
+    2300008: faces_red
+    2300010: faces_white
+    2300012: faces_yellow
+    3300000: base
+    3300002: faces_cyan
+    3300004: faces_green
+    3300006: faces_orange
+    3300008: faces_red
+    3300010: faces_white
+    3300012: faces_yellow
+    4300000: base
+    4300002: faces_cyan
+    4300004: faces_green
+    4300006: faces_orange
+    4300008: faces_red
+    4300010: faces_white
+    4300012: faces_yellow
   externalObjects: {}
   materials:
     importMaterials: 1

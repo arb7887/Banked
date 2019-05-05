@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour {
         {
             Destroy(collision.gameObject);
         }
-        if(collision.gameObject.name == "Door" && GetComponent<CoinManagement>().coinMultiplier >= 3)
+        if(collision.gameObject.name == "gate" && GetComponent<CoinManagement>().coinMultiplier >= 3)
         {
             Destroy(collision.gameObject);
             for(int i = 0; i < 3; i++)

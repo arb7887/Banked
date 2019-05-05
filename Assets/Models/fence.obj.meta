@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 232414cef6a822f42b30dab23bb23f97
+guid: c2813d99daacbc247a78dd4129cc11e5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -7,12 +7,11 @@ ModelImporter:
     100002: //RootNode
     400000: default
     400002: //RootNode
-    2100000: mat18
-    2100002: mat22
+    2100000: Fence_Nail
+    2100002: Fence_Wood
     2300000: default
     3300000: default
     4300000: default
-    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -1,18 +1,31 @@
 fileFormatVersion: 2
-guid: 232414cef6a822f42b30dab23bb23f97
+guid: 3744106c841b1ad48b330e28b606cfee
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: default
+    100000: mesh187267960
     100002: //RootNode
-    400000: default
+    400000: mesh187267960
     400002: //RootNode
-    2100000: mat18
-    2100002: mat22
-    2300000: default
-    3300000: default
-    4300000: default
-    2186277476908879412: ImportLogs
+    2100000: mat20
+    2100002: mat17
+    2100004: mat5
+    2100006: mat21
+    2100008: mat11
+    2100010: mat9
+    2100012: mat4
+    2100014: mat8
+    2100016: mat13
+    2100018: mat3
+    2100020: mat7
+    2100022: mat6
+    2100024: mat23
+    2100026: mat22
+    2100028: mat18
+    2100030: mat19
+    2300000: mesh187267960
+    3300000: mesh187267960
+    4300000: mesh187267960
   externalObjects: {}
   materials:
     importMaterials: 1

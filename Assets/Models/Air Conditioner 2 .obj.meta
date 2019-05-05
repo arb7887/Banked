@@ -1,18 +1,22 @@
 fileFormatVersion: 2
-guid: 232414cef6a822f42b30dab23bb23f97
+guid: 890ceb1a765045144ac1113c57472e37
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: default
-    100002: //RootNode
-    400000: default
-    400002: //RootNode
-    2100000: mat18
-    2100002: mat22
-    2300000: default
-    3300000: default
-    4300000: default
-    2186277476908879412: ImportLogs
+    100000: //RootNode
+    100002: Air_Conditioner2
+    100004: Element_a1
+    400000: //RootNode
+    400002: Air_Conditioner2
+    400004: Element_a1
+    2100000: Air_Conditioner2Mat
+    2100002: Element_a1Mat
+    2300000: Air_Conditioner2
+    2300002: Element_a1
+    3300000: Air_Conditioner2
+    3300002: Element_a1
+    4300000: Air_Conditioner2
+    4300002: Element_a1
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -44,7 +48,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.02
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

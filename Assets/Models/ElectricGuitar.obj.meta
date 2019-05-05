@@ -1,18 +1,16 @@
 fileFormatVersion: 2
-guid: 232414cef6a822f42b30dab23bb23f97
+guid: 2aa1ea5e0d60e6f4da3ddda1e38fec7b
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: default
-    100002: //RootNode
-    400000: default
-    400002: //RootNode
-    2100000: mat18
-    2100002: mat22
-    2300000: default
-    3300000: default
-    4300000: default
-    2186277476908879412: ImportLogs
+    100000: //RootNode
+    100002: ElectricGuitar_mesh
+    400000: //RootNode
+    400002: ElectricGuitar_mesh
+    2100000: lambert2SG
+    2300000: ElectricGuitar_mesh
+    3300000: ElectricGuitar_mesh
+    4300000: ElectricGuitar_mesh
   externalObjects: {}
   materials:
     importMaterials: 1
